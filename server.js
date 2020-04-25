@@ -1,34 +1,61 @@
-// server.js
-// where your node app starts
+const discord = require("discord.js")
+const client = new discord.Client({ disableEveryone: true, disabledEvents: ["TYPING_START"] });
+const { readdirSync } = require("fs");
+const { join } = require("path");
+const { TOKEN, PREFIX } = require("./config.json")
 
-// we've started you off with Express (https://expressjs.com/)
-// but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-const express = require("express");
-const app = express();
+//CLIENT EVENTS
+client.on("ready", () => {
+  console.log('Ready TO play some soft songs')
+  client.user.setActivity("x!help | Musix")
+})
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+client.on("warn", info => console.log(info));
 
-// make all the files in 'public' available
-// https://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
+client.on("error", console.error)
 
-// https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
+//DEFINIING
+client.commands = new discord.Collection()
+client.prefix = PREFIX
+client.queue = new Map();
+
+
+//LETS LOAD ALL FILES
+const cmdFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"))
+for (const file of cmdFiles) {
+  const command = require(join(__dirname, "commands", file))
+  client.commands.set(command.name, command)
+} //LOADING DONE
+
+
+//WHEN SOMEONE MESSAGE
+client.on("message", message => {
+   if (message.author.bot) return;
+  if (!message.guild) return;
+  
+  if(message.content.startsWith(PREFIX)) { //IF MESSSAGE STARTS WITH MINE BOT PREFIX
+    
+    const args = message.content.slice(PREFIX.length).trim().split(/ +/) //removing prefix from args
+    const command = args.shift().toLowerCase();
+    
+    if(!client.commands.has(command)) {
+      return;
+    } 
+    
+  try  { //TRY TO GET COMMAND AND EXECUTE
+      client.commands.get(command).execute(client, message, args)
+    } catch (err) { //IF IT CATCH ERROR
+      console.log(err)
+      message.reply("I am getting error on using this command")
+    }
+    
+  }
+  
+  
 });
 
-// send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
-});
 
-// listen for requests :)
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+
+
+//DONT DO ANYTHING WITH THIS TOKEN lol
+client.login(TOKEN)
