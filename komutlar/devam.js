@@ -1,11 +1,11 @@
 module.exports = {
   name: "devam", 
-  description: "Resume the paused Song",
+  description: "Duraklatılmış Şarkıyı devam ettir",
   execute (client, message, args) {
       const { channel } = message.member.voice;
     if (!channel) {
       //IF AUTHOR IS NOT IN VOICE CHANNEL
-      return message.channel.send("YOU NEED TO BE IN VOICE CHANNEL :/");
+      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
@@ -13,10 +13,10 @@ module.exports = {
       serverQueue.playing = true;
       serverQueue.connection.dispatcher.resume()
   
-  return message.channel.send("✅ | Resumed the Paused Song") 
+  return message.channel.send("✅ | Duraklatılmış Şarkıyı Sürdürdü") 
  }
     
-    message.channel.send("There is nothing paused that i can resume")
+    message.channel.send("Devam edebileceğim duraklatılmış bir şey yok")
     
   }
 }

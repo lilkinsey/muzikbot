@@ -1,17 +1,17 @@
 module.exports = {
   name: "kuyruk",
-  description: "get list of added songs",
+  description: "eklenen şarkıların listesini al",
   execute: (client, message, args) => {
     const { channel } = message.member.voice;
     if (!channel) {
       //IF AUTHOR IS NOT IN VOICE CHANNEL
-      return message.channel.send("YOU NEED TO BE IN VOICE CHANNEL :/");
+      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!serverQueue) {
-      return message.channel.send("There is nothing in the queue");
+      return message.channel.send("Kuyrukta hiçbir şey yok");
     }
 
     message.channel.send(

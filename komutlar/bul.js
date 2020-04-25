@@ -6,18 +6,18 @@ const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
 const { play } = require("../system/music.js") 
 module.exports = {
   name: "bul",
-  description: "PLAY THE SOFTNESS OF THE SOUND",
+  description: "Müzik OYNAYIN",
   async execute(client, message, args) {
     //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
     if (!args.length) {
       //IF AUTHOR DIDENT GIVE URL OR NAME
-      return message.channel.send("WRONG SYNTAX : Type `play <URL> or text`");
+      return message.channel.send("HATA: Bir Söz Veya URL giriniz.`");
     }
 
     const { channel } = message.member.voice;
     if (!channel) {
       //IF AUTHOR IS NOT IN VOICE CHANNEL
-      return message.channel.send("YOU NEED TO BE IN VOICE CHANNEL :/");
+      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
     }
 
     //WE WILL ADD PERMS ERROR LATER :(
@@ -28,7 +28,7 @@ module.exports = {
     const urlcheck = videoPattern.test(args[0]);
 
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      return message.channel.send("PLAYLIST CANNOT BE PLAYED");
+      return message.channel.send("OYNATMA LİSTESİ OYNANAMIYOR");
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
@@ -57,7 +57,7 @@ module.exports = {
       } catch (error) {
         if (message.include === "copyright") {
           return message
-            .reply("THERE IS COPYRIGHT CONTENT IN VIDEO -_-")
+            .reply("VİDEO'DA TELİF HAKKI İÇERİĞİ VAR -_-")
             .catch(console.error);
         } else {
           console.error(error);

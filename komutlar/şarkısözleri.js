@@ -2,22 +2,22 @@ const Genius = new (require("genius-lyrics"))("ApavK7sxIw4WfaTNVe1g9Hc8civ8WqGW0
 const { MessageEmbed } = require("discord.js")
 module.exports = {
   name: "sözler", 
-  description: "Get lyrics of Song",
+  description: "Song şarkı sözleri alın",
   async execute (client, message, args) {
     
      const { channel } = message.member.voice;
     if (!channel) {
       //IF AUTHOR IS NOT IN VOICE CHANNEL
-      return message.channel.send("YOU NEED TO BE IN VOICE CHANNEL :/");
+      return message.channel.send("SES KANALINDA OLMALISINIZ :/");
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!serverQueue) {
-      return message.channel.send("There is nothing that bot is playing");
+      return message.channel.send("Bot'un oynadığı hiçbir şey yok");
     }
     
-  let m = await message.channel.send("Finding lyrics")  
+  let m = await message.channel.send("Şarkı Sözü Bulma")  
     
     
     //NOw we gonna see on playing song
@@ -27,7 +27,7 @@ module.exports = {
     song.lyrics()
     .then(lyrics => {
       if (lyrics.length > 4095) {
-        return message.channel.send("LYRICS ARE TOO LONG")
+        return message.channel.send("SÖZLER ÇOK UZUN")
       }
       
       if (lyrics.length < 2048) {
@@ -39,7 +39,7 @@ module.exports = {
   m.delete()
       
     })
-}).catch(err => message.channel.send("Unable to find lyrics"));
+}).catch(err => message.channel.send("Şarkı sözleri bulunamadı"));
     
     
   }

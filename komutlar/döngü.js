@@ -1,18 +1,18 @@
 module.exports = {
   name: "döngü",
-  description: "LOOP THE QUEUE",
+  description: "KUYRUK DÖNÜŞ",
   execute (client, message, args) {
     
     const { channel } = message.member.voice;
     if (!channel) {
       //IF AUTHOR IS NOT IN VOICE CHANNEL
-      return message.channel.send("YOU NEED TO BE IN VOICE CHANNEL :/");
+      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!serverQueue) {
-      return message.channel.send("There is nothing playing that i could loop");
+      return message.channel.send("Oynadığım hiçbir şey yok");
     }
     
     //OOOOF
