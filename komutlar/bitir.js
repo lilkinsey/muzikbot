@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 
 module.exports = {
-  name: "stop",
+  name: "bitir",
   description: "Stop the music",
   execute(client, message, args) {
     const { channel } = message.member.voice;

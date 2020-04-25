@@ -1,5 +1,5 @@
 module.exports = {
-  name: "np",
+  name: "şarkıadı",
   description: "send the name of on going song",
   execute (client, message, args) {
     

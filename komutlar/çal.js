@@ -5,7 +5,7 @@ const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
 const { play } = require("../system/music.js") 
 module.exports = {
-  name: "play",
+  name: "bul",
   description: "PLAY THE SOFTNESS OF THE SOUND",
   async execute(client, message, args) {
     //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE

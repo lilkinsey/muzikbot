@@ -6,8 +6,8 @@ const { TOKEN, PREFIX } = require("./config.json")
 
 //CLIENT EVENTS
 client.on("ready", () => {
-  console.log('Ready TO play some soft songs')
-  client.user.setActivity("x!help | Musix")
+  console.log('Şarkıları Çalmaya Hazırım')
+  client.user.setActivity(" Loz 'Bey | Müzik")
 })
 
 client.on("warn", info => console.log(info));
@@ -21,9 +21,9 @@ client.queue = new Map();
 
 
 //LETS LOAD ALL FILES
-const cmdFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"))
+const cmdFiles = readdirSync(join(__dirname, "komutlar")).filter(file => file.endsWith(".js"))
 for (const file of cmdFiles) {
-  const command = require(join(__dirname, "commands", file))
+  const command = require(join(__dirname, "komutlar", file))
   client.commands.set(command.name, command)
 } //LOADING DONE
 
@@ -46,7 +46,7 @@ client.on("message", message => {
       client.commands.get(command).execute(client, message, args)
     } catch (err) { //IF IT CATCH ERROR
       console.log(err)
-      message.reply("I am getting error on using this command")
+      message.reply("Bu komutu kullanırken hata alıyorum")
     }
     
   }

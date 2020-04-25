@@ -1,5 +1,5 @@
 module.exports = {
-  name: "resume", 
+  name: "devam", 
   description: "Resume the paused Song",
   execute (client, message, args) {
       const { channel } = message.member.voice;
