@@ -1,22 +1,37 @@
-const utils = require('../global/utils');
-const config = require('../config.json');
+const { Util } = require("discord.js");
+const { YOUTUBE_API_KEY } = require("../config.json");
+const ytdl = require("ytdl-core");
+const YoutubeAPI = require("simple-youtube-api");
+const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
+const { play } = require("../system/music.js") 
+module.exports = {
+  name: "ses",
+  description: "Müzik Sesi Ayarla",
+  async execute(client, message, args) {
+    //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
 
-module.exports.run = async (bot, message, args) => {
+    const { channel } = message.member.voice;
+    if (!channel) {
+      //IF AUTHOR IS NOT IN VOICE CHANNEL
+      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
+    }
 
-    let queue = bot.queue.get(message.guild.id);
-    if (!queue) return [message.delete(), utils.timed_msg('⚠ No musics are being played.', 5000)];
+    //WE WILL ADD PERMS ERROR LATER :(
+    const serverQueue = message.client.queue.get(message.guild.id);
+
+    const queueConstruct = {
+      textChannel: message.channel,
+      channel,
+      connection: null,
+      songs: [],
+      loop: false,
+      volume: 20,
+      playing: true
+    };
+
+    let songData = null;
+    let song = null;
     
-    if (!args[0]) return [message.delete(), message.channel.send(`🎵 Current Volume: **${queue.volume}/100**`)];
-    if (isNaN(args[0])) return [message.delete(), utils.timed_msg(utils.cmd_fail(`${message.author}, please input a volume between 0 and 100 only!`, `${config.prefix}volume <volume>`), 5000)];
-    if (args[0] < 0 || args[0] > 100) return [message.delete(), utils.timed_msg(utils.cmd_fail(`${message.author}, please input a volume between 0 and 100 only!`, `${config.prefix}volume <volume>`), 5000)];
-
-    queue.volume = args[0];
-    queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);
-
-    return message.channel.send(`🎵 Volume has now been set to **${queue.volume}/100**`);
-};
-
-module.exports.help = {
-    name: 'volume',
-    aliases: ['vol']
+    
+  }
 };
