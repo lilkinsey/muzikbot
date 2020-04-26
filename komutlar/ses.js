@@ -1,37 +1,28 @@
-const { Util } = require("discord.js");
-const { YOUTUBE_API_KEY } = require("../config.json");
-const ytdl = require("ytdl-core");
-const YoutubeAPI = require("simple-youtube-api");
-const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../system/music.js") 
-module.exports = {
-  name: "ses",
-  description: "Müzik Sesi Ayarla",
-  async execute(client, message, args) {
-    //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
+const Discord = require('discord.js');
+exports.run = (client, message, args, ops) => {
+    message.delete()
+  
+  let fetched = ops.active.get(message.guild.id);
+  
+  if (!fetched) return message.channel.send("Çalan Bir Müzik Bulunamadı.!");
+  
+  if (message.member.voiceChannel !== message.guild.me.voiceChannel) return message.channel.send("Üzgünüm!");
 
-    const { channel } = message.member.voice;
-    if (!channel) {
-      //IF AUTHOR IS NOT IN VOICE CHANNEL
-      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
-    }
+  if (isNaN(args[0]) || args[0] > 200 || args[0] < 0) return message.channel.send("Lütfen Bir Sayı Giriniz. 0-200 Arasından.")
 
-    //WE WILL ADD PERMS ERROR LATER :(
-    const serverQueue = message.client.queue.get(message.guild.id);
+  fetched.dispatcher.setVolume(args[0]/100);
+  message.channel.send(`Ses Başarı İle Değiştirildi ${fetched.queue[0].songTitle} ve ${args[0]}`);
+};
 
-    const queueConstruct = {
-      textChannel: message.channel,
-      channel,
-      connection: null,
-      songs: [],
-      loop: false,
-      volume: 20,
-      playing: true
-    };
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: ['vol', 'volume'],
+  permlevel: 4
+};
 
-    let songData = null;
-    let song = null;
-    
-    
-  }
+exports.help = {
+  name: 'ses',
+  description: 'Bir kullanÄ±cÄ±ya Ã¶zel mesaj yollar.',
+  usage: 'ses'
 };
