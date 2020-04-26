@@ -1,28 +1,14 @@
-const Discord = require('discord.js');
-exports.run = (client, message, args, ops) => {
-    message.delete()
-  
-  let fetched = ops.active.get(message.guild.id);
-  
-  if (!fetched) return message.channel.send("Çalan Bir Müzik Bulunamadı.!");
-  
-  if (message.member.voiceChannel !== message.guild.me.voiceChannel) return message.channel.send("Üzgünüm!");
-
-  if (isNaN(args[0]) || args[0] > 200 || args[0] < 0) return message.channel.send("Lütfen Bir Sayı Giriniz. 0-200 Arasından.")
-
-  fetched.dispatcher.setVolume(args[0]/100);
-  message.channel.send(`Ses Başarı İle Değiştirildi ${fetched.queue[0].songTitle} ve ${args[0]}`);
-};
-
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: ['vol', 'volume'],
-  permlevel: 4
-};
-
-exports.help = {
-  name: 'ses',
-  description: 'Bir kullanÄ±cÄ±ya Ã¶zel mesaj yollar.',
-  usage: 'ses'
+module.exports = {
+  name: "ses",
+  description: "Şarkıyı atlayın veya şarkıyı bir sonrakine kaydırın",
+  execute(client, message, args) {
+   		const { channel } = message.member.voice;
+		if (!channel) return message.channel.send('Lütfen Bir Ses Kanalına Giriniz Aksi Taktirde Bu Komut Çalışmaz.!');
+		const serverQueue = message.client.queue.get(message.guild.id);
+		if (!serverQueue) return message.channel.send('Çalan Bir Şarkı Bulunamadı');
+		if (!args[0]) return message.channel.send(`Ses Seviyesi: **${serverQueue.volume}**`);
+		serverQueue.volume = args[0]; // eslint-disable-line
+		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 5);
+		return message.channel.send(`Ayarlanan Ses Seviyesi: **${args[0]}**`);
+  }
 };
