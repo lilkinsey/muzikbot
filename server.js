@@ -7,7 +7,7 @@ const { TOKEN, PREFIX } = require("./config.json")
 //CLIENT EVENTS
 client.on("ready", () => {
   console.log('Şarkıları Çalmaya Hazırım')
-  client.user.setActivity(" DJ ARMUT AKTIF ")
+  client.user.setActivity("/bul+/bitir+/geç")
 })
 
 client.on("warn", info => console.log(info));
