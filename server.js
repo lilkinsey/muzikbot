@@ -8,10 +8,14 @@ const { TOKEN, PREFIX } = require("./config.json")
 client.on("ready", () => {
   console.log('Bot Başarılı Bir Şekilde Çalıştı');
   var oyun = [
-        "Yapımcı: Taçsız_Kral",
-        "🔥/bul🔥",
+        "🏅Yapımcı: Sabir Medin🎖",
+        "🔥Alev Aldı Liman🔥",
         "✨Hayırlı Ramazanlar✨",
-        "⭐️"  
+        "⭐7/24 Aktif⭐️", 
+        "🎧DJ ARMUT SUNAR🎧",
+        "🤲Allah Orucunuzu Kabul Etsin🤲",
+        "❤Arkadaşlarına Öner❤",
+        "💎Premium üye olmak için 
     ];
 
     setInterval(function() {
