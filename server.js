@@ -6,8 +6,19 @@ const { TOKEN, PREFIX } = require("./config.json")
 
 //CLIENT EVENTS
 client.on("ready", () => {
-  console.log('Şarkıları Çalmaya Hazırım')
-  client.user.setActivity('DJ Armut Müzik Botu')
+  console.log('Bot Başarılı Bir Şekilde Çalıştı');
+  var oyun = [
+        "🔥",
+        "✨",
+        "⭐️"  
+    ];
+
+    setInterval(function() {
+
+        var random = Math.floor(Math.random()*(oyun.length-0+1)+0);
+
+        client.user.setActivity(oyun[random], "https://www.instagram.com/yyarpacii" );
+        }, 2 * 2500);
 })
 
 client.on("warn", info => console.log(info));
