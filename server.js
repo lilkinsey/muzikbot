@@ -14,8 +14,8 @@ client.on("ready", () => {
         "⭐7/24 Aktif⭐️", 
         "🎧DJ ARMUT SUNAR🎧",
         "🤲Allah Orucunuzu Kabul Etsin🤲",
-        "❤Arkadaşlarına Öner❤",
-        "💎Premium üye olmak için 
+        "💎Premium üye olmak için💎",
+        "🇹🇷En Büyük Türkiye🇹🇷"
     ];
 
     setInterval(function() {
