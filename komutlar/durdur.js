@@ -1,5 +1,5 @@
 module.exports = {
-  name: "pause",
+  name: "durdur",
   description: "şarkıyı duraklat",
   execute (client, message, args) {
   const { channel } = message.member.voice;
