@@ -44,7 +44,7 @@ module.exports = {
     
     
     
-      queue.textChannel.send(`**Şarkı Başlıyor...** - [${song.title}](${song.url})`)
+      queue.textChannel.send(`**Şarkı Başlıyor...** - [${Şarkıyı Açan user}]
     
     
   }
