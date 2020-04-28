@@ -1,4 +1,3 @@
-//I WILL BE BACK AFTER 5 min
 const ytdlDiscord = require("ytdl-core-discord");
 
 module.exports = {
