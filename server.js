@@ -8,7 +8,10 @@ const { TOKEN, PREFIX } = require("./config.json")
 client.on("ready", () => {
   console.log('Şarkıları Çalmaya Hazırım')
   client.user.setActivity('DJ Armut Müzik Botu')
+  client.user.setActivity('DJ Armut Müzik Botu')
+  
 })
+
 
 client.on("warn", info => console.log(info));
 
