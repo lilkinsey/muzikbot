@@ -5,7 +5,7 @@ const YoutubeAPI = require("simple-youtube-api");
 const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
 const { play } = require("../system/music.js") 
 module.exports = {
-  name: "bul",
+  name: "play",
   description: "Müzik OYNAYIN",
   async execute(client, message, args) {
     //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
@@ -79,7 +79,7 @@ module.exports = {
     
     if(serverQueue) {
       serverQueue.songs.push(song)
-      return serverQueue.textChannel.send(`\`${song.title}\`, Song Added to queue`)
+      return serverQueue.textChannel.send(`\`${song.title}\`, Şarkı kuyruğa eklendi`)
       .catch(console.error)
     } else {
       queueConstruct.songs.push(song);

@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "discord.js": "^11.5.2",
+    "discord.js": "^12.1.1",
     "fs": "^0.0.2",
     "path": "^0.12.7",
     "simple-youtube-api": "^5.2.1",
-    "ytdl-core": "^2.1.1",
+    "ytdl-core": "^2.1.0",
     "ytdl-core-discord": "^1.2.0",
-    "@discordjs/opus": "^0.2.1",
+    "@discordjs/opus": "^0.1.0",
     "genius-lyrics": "^2.0.0"
   },
   "engines": {

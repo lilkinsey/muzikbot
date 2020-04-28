@@ -1,3 +1,4 @@
+//I WILL BE BACK AFTER 5 min
 const ytdlDiscord = require("ytdl-core-discord");
 
 module.exports = {
@@ -43,7 +44,7 @@ module.exports = {
     
     
     
-      queue.textChannel.send(`**Şarkı Başlıyor...** - [${Şarkıyı Açan user}]
+      queue.textChannel.send(`**STARTED PLAYING** - [${song.title}](${song.url})`)
     
     
   }
