@@ -8,8 +8,9 @@ const { TOKEN, PREFIX } = require("./config.json")
 client.on("ready", () => {
   console.log('Bot Başarılı Bir Şekilde Çalıştı');
   var oyun = [
-        "🔥",
-        "✨",
+        "Yapımcı: Taçsız_Kral",
+        "🔥/bul🔥",
+        "✨Hayırlı Ramazanlar✨",
         "⭐️"  
     ];
 
