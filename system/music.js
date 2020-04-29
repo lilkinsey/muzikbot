@@ -47,6 +47,6 @@ module.exports = {
 
     
        queue.textChannel.send(`**STARTED PLAYING** - [${song.title}] (<@${message.author.id}> Tarafından)`)
-    );
+    
   }
-};
+}
