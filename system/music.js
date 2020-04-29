@@ -45,8 +45,8 @@ module.exports = {
       .on("error", console.error);
     dispatcher.setVolumeLogarithmic(queue.volume / 100); //VOLUME
 
-    queue.textChannel.send(
-      `**STARTED PLAYING** - [${song.title}] (<@${message.author.id}> Tarafından)`
+    
+       queue.textChannel.send(`**STARTED PLAYING** - [${song.title}] (<@${message.author.id}> Tarafından)`)
     );
   }
 };
