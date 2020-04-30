@@ -1,4 +1,4 @@
-const discord = require("discord.js")
+704985854036279328​const discord = require("discord.js")
 const client = new discord.Client({ disableEveryone: true, disabledEvents: ["TYPING_START"] });
 const { readdirSync } = require("fs");
 const { join } = require("path");
