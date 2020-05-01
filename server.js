@@ -1,4 +1,4 @@
-704985854036279328​const discord = require("discord.js")
+const discord = require("discord.js")
 const client = new discord.Client({ disableEveryone: true, disabledEvents: ["TYPING_START"] });
 const { readdirSync } = require("fs");
 const { join } = require("path");
@@ -8,15 +8,14 @@ const { TOKEN, PREFIX } = require("./config.json")
 client.on("ready", () => {
   console.log('Bot Başarılı Bir Şekilde Çalıştı');
   var oyun = [
-        "🏅Yapımcı: Sabir Medin🎖",
+        "🏅Yapımcı: LozBey🎖",
         "🔥Alev Aldı Liman🔥",
         "✨Hayırlı Ramazanlar✨",
         "⭐7/24 Aktif⭐️", 
-        "🎧DJ ARMUT SUNAR🎧",
+        "🎧Müzik Botu SUNAR🎧",
         "🤲Allah Orucunuzu Kabul Etsin🤲",
-        "💎Premium üye olmak için💎",
-        "🇹🇷En Büyük Türkiye🇹🇷"
-    ];
+        "💎Premium üye olmak için💎"
+  ];
 
     setInterval(function() {
 
