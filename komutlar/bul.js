@@ -79,7 +79,7 @@ module.exports = {
     
     if(serverQueue) {
       serverQueue.songs.push(song)
-      return serverQueue.textChannel.send(`\`${song.title}\`, Song Added to queue`)
+      return serverQueue.textChannel.send(`\`${song.title}\`, Sıraya Eklendi`)
       .catch(console.error)
     } else {
       queueConstruct.songs.push(song);
@@ -92,10 +92,10 @@ module.exports = {
         queueConstruct.connection = await channel.join();
         play(queueConstruct.songs[0], message);
       } catch (error) {
-        console.error(`Could not join voice channel: ${error}`);
+        console.error(`Ses Kanalına Katılamadı: ${error}`);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send({embed: {"description": `😭 | Could not join the channel: ${error}`, "color": "#ff2050"}}).catch(console.error);
+        return message.channel.send({embed: {"description": `😭 | Kanala katılamadı: ${error}`, "color": "#ff2050"}}).catch(console.error);
       }
     }
     
